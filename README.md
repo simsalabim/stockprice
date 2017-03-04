@@ -20,3 +20,13 @@ alias fb="stockprice fb"
 $ fb
 137.17
 ```
+
+# Installation
+
+Download an executable for your OS: [OSX](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice), [Linux](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice-lin), [Windows](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice.exe) and place it in a directory listed in your $PATH.
+
+# Development
+
+For development you will need a Go language compiler installed. I used Go v1.8.
+
+To rebuild the binaries for 3 main platforms run `./build_executables`.
