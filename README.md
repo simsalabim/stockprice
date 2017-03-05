@@ -40,4 +40,4 @@ For development you will need a Go language compiler installed. I used Go v1.8.
 
 To rebuild the binaries for 3 main platforms run `./build_executables`.
 
-Run tests with `go test -v`
+Run tests with `cd finance && go test -v`
