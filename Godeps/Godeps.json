@@ -1,0 +1,28 @@
+{
+	"ImportPath": "stockprice",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/PuerkitoBio/goquery",
+			"Comment": "v1.1.0",
+			"Rev": "e1271ee34c6a305e38566ecd27ae374944907ee9"
+		},
+		{
+			"ImportPath": "github.com/andybalholm/cascadia",
+			"Rev": "349dd0209470eabd9514242c688c403c0926d266"
+		},
+		{
+			"ImportPath": "github.com/simsalabim/stockprice/finance",
+			"Rev": "072869e248dcfb6daffdf8f5790bd8162f02175b"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html",
+			"Rev": "d379faa25cbdc04d653984913a2ceb43b0bc46d7"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html/atom",
+			"Rev": "d379faa25cbdc04d653984913a2ceb43b0bc46d7"
+		}
+	]
+}
