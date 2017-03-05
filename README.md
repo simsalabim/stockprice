@@ -1,14 +1,23 @@
 # Stock Price Reporter
 
 A CLI tool that looks up stock prices.
-
-Now you can check stock price right in your console without losing focus on what matters :computer:
+Now you can check stock price right in your console or in VIM without losing focus on what matters :computer:
 
 ```shell
-$ stockprice
-Usage: stockprice [symbol], e.g. stockprice grpn
 $ stockprice grpn
 4.02
+```
+
+# Integration with VIM
+As amazing as it sounds, you may not check the stock price of your interest right in your code editor.
+
+```vim
+" ~/.vimrc
+function! Stockprice(symbol)
+  echo system('stockprice ' . a:symbol)
+endfunction
+
+map <leader>fb :call Stockprice('fb')<cr>
 ```
 
 You can create aliases for frequently used companies and add them to your .bashrc/.zshrc file:
