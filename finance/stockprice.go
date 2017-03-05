@@ -1,4 +1,4 @@
-package main
+package finance
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func findStockPrice(symbol string) float64 {
+func FindStockPrice(symbol string) float64 {
 	return findStockPriceByUrl(stockPriceUrl(symbol))
 }
 
@@ -28,7 +28,9 @@ func findStockPriceByUrl(stockPriceUrl string) float64 {
 
 	stock_price_str := strings.TrimSpace(selection.Text())
 	stock_price, err := strconv.ParseFloat(stock_price_str, 64)
-	checkError(err)
+	if err != nil {
+		panic(err.Error())
+	}
 
 	return stock_price
 }

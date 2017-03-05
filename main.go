@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/simsalabim/stockprice/finance"
 	"os"
 )
 
@@ -13,11 +14,5 @@ func init() {
 }
 
 func main() {
-	fmt.Println(findStockPrice(os.Args[1]))
-}
-
-func checkError(err error) {
-	if err != nil {
-		panic(err.Error())
-	}
+	fmt.Println(finance.FindStockPrice(os.Args[1]))
 }

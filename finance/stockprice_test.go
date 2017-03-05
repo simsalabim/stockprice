@@ -1,4 +1,4 @@
-package main
+package finance
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ const checkMark = "\u2713"
 const ballotX = "\u2717"
 
 func TestFindStockPriceByUrl(t *testing.T) {
-	ms := mockServer("stubs/sample_stock_price.html")
+	ms := mockServer("../stubs/sample_stock_price.html")
 	defer ms.Close()
 
 	testStockPrice := findStockPriceByUrl(ms.URL)
