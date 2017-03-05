@@ -10,8 +10,11 @@ import (
 )
 
 func findStockPrice(symbol string) float64 {
-	pageUrl := "https://www.google.com/finance?q=" + url.QueryEscape(symbol)
-	doc, err := goquery.NewDocument(pageUrl)
+	return findStockPriceByUrl(stockPriceUrl(symbol))
+}
+
+func findStockPriceByUrl(stockPriceUrl string) float64 {
+	doc, err := goquery.NewDocument(stockPriceUrl)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -19,7 +22,7 @@ func findStockPrice(symbol string) float64 {
 	selection := doc.Find("#market-data-div .pr")
 
 	if len(selection.Nodes) == 0 {
-		fmt.Println("Your search - " + symbol + " - produces no matches.")
+		fmt.Println("Your search produces no matches.")
 		os.Exit(-1)
 	}
 
@@ -28,4 +31,8 @@ func findStockPrice(symbol string) float64 {
 	checkError(err)
 
 	return stock_price
+}
+
+func stockPriceUrl(symbol string) string {
+	return "https://www.google.com/finance?q=" + url.QueryEscape(symbol)
 }
