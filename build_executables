@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# https://golang.org/doc/install/source#environment
 env GOOS=darwin GOARCH=amd64 go build -o ./bin/stockprice stockprice
 env GOOS=linux GOARCH=amd64 go build -o ./bin/stockprice-lin stockprice
 env GOOS=windows GOARCH=amd64 go build -o ./bin/stockprice.exe stockprice
