@@ -8,8 +8,13 @@ $ stockprice grpn
 4.02
 ```
 
+## Installation
+#### `curl -L https://raw.githubusercontent.com/simsalabim/stockprice/master/install.sh | sh`
+
+Or manually download an executable for your OS: [OSX](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice), [Linux](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice-lin), [Windows](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice.exe) and place it in a directory listed in $PATH.
+
 ## VIM Integration
-As amazing as it sounds, you may not check the stock price of your interest right in your code editor.
+As amazing as it sounds, you may now check the stock price of your interest right in your code editor.
 
 ```vim
 " ~/.vimrc
@@ -40,13 +45,11 @@ $ fb
 137.17
 ```
 
-## Installation
-
-Download an executable for your OS: [OSX](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice), [Linux](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice-lin), [Windows](https://github.com/simsalabim/stockprice/blob/master/bin/stockprice.exe) and place it in a directory listed in your $PATH.
-
 ## Development
 
 For development you will need a Go language compiler installed. I used Go v1.8.
+
+For dependency management, please refer to [Godep](https://github.com/tools/godep) documentation.
 
 To rebuild the binaries for 3 main platforms run `./build_executables`.
 
