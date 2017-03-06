@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-93094324-1', 'auto');
+ga('send', 'pageview');
+    </script>
+    <style type="text/css">
+body {
+  min-height: 100%;
+}
+      .footer {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        height: 60px;
+        background-color: #f5f5f5;
+      }
+      .main {
+        margin-bottom: 120px
+      }
+      .footer-container {
+        position: relative
+      }
+      .m-t-20 {
+        margin-top: 20px;
+      }
+      .p-t-20 {
+        padding-top: 20px;
+      }
+      .text-muted {
+        margin: 20px 0;
+      }
+      .wombat {
+        width: 32px;
+      }
+      .demo-image {
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container main">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">Real-time market data <small>for developers</small></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-5 text-center image-container">
+          <img src="stockprice-cli.gif" class="demo-image" />
+        </div>
+        <div class="col-md-5 text-center image-container">
+          <img src="stockprice-vim.gif" class="demo-image" />
+        </div>
+        <div class="col-md-1">&nbsp;</div>
+      </div>
+
+      <div class="row p-t-20">
+        <div class="col-md-1"> </div>
+        <div class="col-md-10 text-center">
+          <h2>Start using it now!</h2>
+          <code>curl -L https://raw.githubusercontent.com/simsalabim/stockprice/master/install.sh | sh
+          </code>
+          <div class="text-center">
+</div>
+        </div>
+        <div class="col-md-1"> </div>
+      </div>
+      <div class="row p-t-20">
+        <div class="col-md-4">&nbsp;</div>
+        <div class="col-md-4">
+<pre class="text-justify" style="width: 350px;">" ~/.vimrc
+function! Stockprice(symbol)
+  echo system('stockprice ' . a:symbol)
+endfunction
+
+map &lt;leader&gt;fb :call Stockprice('fb')&lt;cr&gt; </pre>
+        </div>
+        <div class="col-md-4">&nbsp;</div>
+      </div>
+      <div class="row p-t-20">
+        <div class="col-md-2">&nbsp;</div>
+        <div class="col-md-4">
+          <blockquote>
+            Whether I'm developing a new feature of deploying a serivce, I always deeply care about <em>actual</em> market data. I love markets.
+            <small>Aladdin</small>
+          </blockquote>
+        </div>
+
+        <div class="col-md-4">
+          <blockquote>
+            Knowing how my stock is doing <em>right now</em> every now and then has been crutial to my day to day productivity.
+            <small>Tasmanial devil</small>
+          </blockquote>
+        </div>
+        <div class="col-md-2">&nbsp;</div>
+      </div>
+    </div>
+
+    <div class="footer-container">
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted text-center">
+Learn more on the <a href="https://github.com/simsalabim/stockprice">GitHub repo page</a>
+ | Developed by <a href="http://twitter.com/noRerih"><img class="wombat" src="wombat.png" alt="wombat" title="This is an image of a wombat!"/></a>
+        </p>
+      </div>
+    </footer>
+    </div>
+  </body>
+</html>
