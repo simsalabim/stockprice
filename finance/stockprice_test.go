@@ -15,7 +15,7 @@ func TestFindStockPriceByUrl(t *testing.T) {
 	ms := mockServer("../stubs/sample_stock_price.html")
 	defer ms.Close()
 
-	testStockPrice := findStockPriceByUrl(ms.URL)
+	testStockPrice, _ := findStockPriceByUrl(ms.URL)
 
 	expectedPrice := 4.0203092013
 	if testStockPrice == expectedPrice {

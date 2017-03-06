@@ -1,38 +1,36 @@
 package finance
 
 import (
-	"fmt"
+	"errors"
 	"github.com/PuerkitoBio/goquery"
 	"net/url"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func FindStockPrice(symbol string) float64 {
+func FindStockPrice(symbol string) (float64, error) {
 	return findStockPriceByUrl(stockPriceUrl(symbol))
 }
 
-func findStockPriceByUrl(stockPriceUrl string) float64 {
+func findStockPriceByUrl(stockPriceUrl string) (float64, error) {
 	doc, err := goquery.NewDocument(stockPriceUrl)
 	if err != nil {
-		fmt.Println(err)
+		return -1, errors.New("Your search produces no matches.")
 	}
 
 	selection := doc.Find("#market-data-div .pr")
 
 	if len(selection.Nodes) == 0 {
-		fmt.Println("Your search produces no matches.")
-		os.Exit(-1)
+		return -2, errors.New("Your search produces no matches.")
 	}
 
 	stock_price_str := strings.TrimSpace(selection.Text())
 	stock_price, err := strconv.ParseFloat(stock_price_str, 64)
 	if err != nil {
-		panic(err.Error())
+		return -3, err
 	}
 
-	return stock_price
+	return stock_price, nil
 }
 
 func stockPriceUrl(symbol string) string {
