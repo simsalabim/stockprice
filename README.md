@@ -54,3 +54,6 @@ For dependency management, please refer to [Godep](https://github.com/tools/gode
 To rebuild the binaries for 3 main platforms run `./build_executables`.
 
 Run tests with `cd finance && go test -v`
+
+## TODO
+- [ ] Atom plugin
