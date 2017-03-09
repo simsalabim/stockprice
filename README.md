@@ -2,10 +2,11 @@
 
 A CLI tool that looks up stock prices.
 Now you can check stock price right in your console or in VIM without losing focus on what matters :computer:
+![](https://raw.githubusercontent.com/simsalabim/stockprice/master/colorized_stockprice.png?cache)
 
 ```shell
 $ stockprice grpn
-4.02
+4.10 +0.03 (0.74%)
 ```
 
 ## Installation
@@ -19,7 +20,7 @@ As amazing as it sounds, you may now check the stock price of your interest righ
 ```vim
 " ~/.vimrc
 function! Stockprice(symbol)
-  echo system('stockprice ' . a:symbol)
+  execute system('stockprice -f vim ' . a:symbol)
 endfunction
 
 map <leader>fb :call Stockprice('fb')<cr>
@@ -42,7 +43,7 @@ alias fb="stockprice fb"
 
 # further usage in console:
 $ fb
-137.17
+137.72 +0.42 (0.31%)
 ```
 
 ## Development
