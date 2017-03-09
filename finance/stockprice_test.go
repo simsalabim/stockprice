@@ -15,15 +15,32 @@ func TestFindStockPriceByUrl(t *testing.T) {
 	ms := mockServer("../stubs/sample_stock_price.html")
 	defer ms.Close()
 
-	testStockPrice, _ := findStockPriceByUrl(ms.URL)
+	testStockPrice, testDelta, testPercentage, _ := findStockPriceByUrl(ms.URL)
 
 	expectedPrice := 4.0203092013
 	if testStockPrice == expectedPrice {
-		t.Logf("\tShould find a correct stock pricea \"%f\" %v", expectedPrice, checkMark)
+		t.Logf("\tShould find a correct stock price \"%f\" %v", expectedPrice, checkMark)
 	} else {
-		t.Errorf("\tShould find a correct stock pricea \"%f\", but found \"%f\" %v",
+		t.Errorf("\tShould find a correct stock price \"%f\", but found \"%f\" %v",
 			expectedPrice, testStockPrice, ballotX)
 	}
+
+	expectedDelta := 0.03
+	if testDelta == expectedDelta {
+		t.Logf("\tShould find a correct price change \"%f\" %v", expectedDelta, checkMark)
+	} else {
+		t.Errorf("\tShould find a correct price change \"%f\", but found \"%f\" %v",
+			expectedDelta, testStockPrice, ballotX)
+	}
+
+	expectedPercentage := "(0.74%)"
+	if testPercentage == expectedPercentage {
+		t.Logf("\tShould find a correct percentage change \"%f\" %v", expectedPercentage, checkMark)
+	} else {
+		t.Errorf("\tShould find a correct percentage change \"%f\", but found \"%f\" %v",
+			expectedPercentage, testStockPrice, ballotX)
+	}
+
 	ms.Close()
 }
 

@@ -8,29 +8,33 @@ import (
 	"strings"
 )
 
-func FindStockPrice(symbol string) (float64, error) {
+func FindStockPrice(symbol string) (float64, float64, string, error) {
 	return findStockPriceByUrl(stockPriceUrl(symbol))
 }
 
-func findStockPriceByUrl(stockPriceUrl string) (float64, error) {
+func findStockPriceByUrl(stockPriceUrl string) (float64, float64, string, error) {
 	doc, err := goquery.NewDocument(stockPriceUrl)
 	if err != nil {
-		return -1, errors.New("Your search produces no matches.")
+		return -1, -1, "", errors.New("Your search produces no matches.")
 	}
 
 	selection := doc.Find("#market-data-div .pr")
 
 	if len(selection.Nodes) == 0 {
-		return -2, errors.New("Your search produces no matches.")
+		return -2, -2, "", errors.New("Your search produces no matches.")
 	}
 
-	stock_price_str := strings.TrimSpace(selection.Text())
-	stock_price, err := strconv.ParseFloat(stock_price_str, 64)
+	changes := doc.Find(".id-price-change .ch.bld")
+	delta, _ := strconv.ParseFloat(changes.Find("span").First().Text(), 64)
+	percentageStr := changes.Find("span").Last().Text()
+
+	stockPriceStr := strings.TrimSpace(selection.Text())
+	stockPrice, err := strconv.ParseFloat(stockPriceStr, 64)
 	if err != nil {
-		return -3, err
+		return -3, -3, "", err
 	}
 
-	return stock_price, nil
+	return stockPrice, delta, percentageStr, nil
 }
 
 func stockPriceUrl(symbol string) string {
