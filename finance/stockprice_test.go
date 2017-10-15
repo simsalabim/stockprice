@@ -17,7 +17,7 @@ func TestFindStockPriceByUrl(t *testing.T) {
 
 	testStockPrice, testDelta, testPercentage, _ := findStockPriceByUrl(ms.URL)
 
-	expectedPrice := 4.0203092013
+	expectedPrice := 1004.0203092013
 	if testStockPrice == expectedPrice {
 		t.Logf("\tShould find a correct stock price \"%f\" %v", expectedPrice, checkMark)
 	} else {
@@ -25,12 +25,12 @@ func TestFindStockPriceByUrl(t *testing.T) {
 			expectedPrice, testStockPrice, ballotX)
 	}
 
-	expectedDelta := 0.03
+	expectedDelta := 1000.03
 	if testDelta == expectedDelta {
 		t.Logf("\tShould find a correct price change \"%f\" %v", expectedDelta, checkMark)
 	} else {
 		t.Errorf("\tShould find a correct price change \"%f\", but found \"%f\" %v",
-			expectedDelta, testStockPrice, ballotX)
+			expectedDelta, testDelta, ballotX)
 	}
 
 	expectedPercentage := "(0.74%)"
