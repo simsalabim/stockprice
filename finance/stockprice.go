@@ -25,10 +25,10 @@ func findStockPriceByUrl(stockPriceUrl string) (float64, float64, string, error)
 	}
 
 	changes := doc.Find(".id-price-change .ch.bld")
-	delta, _ := strconv.ParseFloat(changes.Find("span").First().Text(), 64)
+	delta, _ := strconv.ParseFloat(strings.Replace(changes.Find("span").First().Text(), ",", "", -1), 64)
 	percentageStr := changes.Find("span").Last().Text()
 
-	stockPriceStr := strings.TrimSpace(selection.Text())
+	stockPriceStr := strings.TrimSpace(strings.Replace(selection.Text(), ",", "", -1))
 	stockPrice, err := strconv.ParseFloat(stockPriceStr, 64)
 	if err != nil {
 		return -3, -3, "", err
