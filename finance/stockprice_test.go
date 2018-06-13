@@ -33,12 +33,12 @@ func TestFindStockPriceByUrl(t *testing.T) {
 			expectedDelta, testDelta, ballotX)
 	}
 
-	expectedPercentage := "(0.74%)"
+	expectedPercentage := "+0.74%"
 	if testPercentage == expectedPercentage {
 		t.Logf("\tShould find a correct percentage change \"%f\" %v", expectedPercentage, checkMark)
 	} else {
 		t.Errorf("\tShould find a correct percentage change \"%f\", but found \"%f\" %v",
-			expectedPercentage, testStockPrice, ballotX)
+			expectedPercentage, testPercentage, ballotX)
 	}
 
 	ms.Close()

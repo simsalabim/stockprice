@@ -18,15 +18,15 @@ func findStockPriceByUrl(stockPriceUrl string) (float64, float64, string, error)
 		return -1, -1, "", errors.New("Your search produces no matches.")
 	}
 
-	selection := doc.Find("#market-data-div .pr")
+	selection := doc.Find(".wsod_last span")
 
 	if len(selection.Nodes) == 0 {
 		return -2, -2, "", errors.New("Your search produces no matches.")
 	}
 
-	changes := doc.Find(".id-price-change .ch.bld")
-	delta, _ := strconv.ParseFloat(strings.Replace(changes.Find("span").First().Text(), ",", "", -1), 64)
-	percentageStr := changes.Find("span").Last().Text()
+	changes := doc.Find(".wsod_change span")
+	percentageStr := changes.Eq(5).Text()
+	delta, _ := strconv.ParseFloat(strings.Replace(changes.Eq(1).Text(), ",", "", -1), 64)
 
 	stockPriceStr := strings.TrimSpace(strings.Replace(selection.Text(), ",", "", -1))
 	stockPrice, err := strconv.ParseFloat(stockPriceStr, 64)
@@ -38,5 +38,5 @@ func findStockPriceByUrl(stockPriceUrl string) (float64, float64, string, error)
 }
 
 func stockPriceUrl(symbol string) string {
-	return "https://www.google.com/finance?q=" + url.QueryEscape(symbol)
+	return "http://money.cnn.com/quote/quote.html?symb=" + url.QueryEscape(symbol)
 }
